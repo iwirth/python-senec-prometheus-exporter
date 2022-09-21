@@ -33,10 +33,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     senec = senecCollector(args.ip)
+    
     REGISTRY.register(senec)
-    # Start up the server to expose the metrics.
+
     start_http_server(args.port)
-    # Generate some requests.
+
     while True:
         time.sleep(args.interval)
         
