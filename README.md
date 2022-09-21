@@ -1,6 +1,7 @@
 # python-senec-prometheus-exporter
 
 Pythonscript that reads data from the webserver SENEC batteries and hosts them as a webservice to be scraped by prometheus.
+
 Only supports SENEC batteries that use ```/lala.cgi``` 
 
 Usage:
