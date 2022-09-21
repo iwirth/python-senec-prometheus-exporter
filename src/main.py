@@ -3,6 +3,7 @@ from prometheus_client.core import GaugeMetricFamily, REGISTRY
 
 from senecdata import senecdata
 
+import argparse
 import time
 
 class senecCollector(object):
@@ -23,11 +24,19 @@ class senecCollector(object):
 
 
 if __name__ == '__main__':
-    senec = senecCollector('your ip here')
+    parser = argparse.ArgumentParser(description='Senec Prometheus Exporter')
+
+    parser.add_argument('--ip', type=str, help='Senec IP', required=True)
+    parser.add_argument('--port', type=int, help='Port to listen on', default=8000)
+    parser.add_argument('--interval', type=float, help='Interval to refresh data in ms', default=4000)
+
+    args = parser.parse_args()
+
+    senec = senecCollector(args.ip)
     REGISTRY.register(senec)
     # Start up the server to expose the metrics.
-    start_http_server(8000)
+    start_http_server(args.port)
     # Generate some requests.
     while True:
-        time.sleep(4000)
+        time.sleep(args.interval)
         
