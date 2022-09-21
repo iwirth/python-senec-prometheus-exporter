@@ -16,7 +16,7 @@ options:
 
 Running it as a service (systemd):
 
-Create unit file" ```/etc/systemd/system/senec-collector.service```
+Create unit file ```/etc/systemd/system/senec-collector.service```
 ```
 [Unit]
 Description=Service for reading SENEC Battery Data
